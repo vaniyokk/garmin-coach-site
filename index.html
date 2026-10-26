@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Garmin Coach</title>
+  <meta name="description" content="Internal training-planning tool by FOP Kuzmin Ivan Oleksandrovych that turns the account owner's Garmin data into structured workouts.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">FOP Kuzmin Ivan Oleksandrovych · internal tool</p>
+    <h1>Garmin Coach</h1>
+    <p class="lede">A private training-planning tool that reads the account owner's Garmin
+      training and recovery data, plans strength, mobility and swim sessions around it, and
+      sends those sessions to their Garmin watch as structured workouts.</p>
+  </header>
+
+  <section class="card">
+    <h2>What it does</h2>
+    <ul>
+      <li>Reads activity, sleep, HRV, heart-rate, stress, Body Battery and step data from the
+        user's own Garmin Connect account, with their explicit authorization.</li>
+      <li>Summarizes recovery and training load, and adjusts the week's plan to it.</li>
+      <li>Builds structured workouts from Garmin's exercise library (sets, reps, weights, rest,
+        form cues) and schedules them on the user's Garmin Connect calendar, so they appear on
+        the watch.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Who uses it</h2>
+    <p>Garmin Coach is an internal tool of FOP Kuzmin Ivan Oleksandrovych, a Ukrainian sole
+      proprietorship, used by its owner for his own training. It is not sold, offered to the
+      public, or used to provide services to third parties.</p>
+  </section>
+
+  <section class="card">
+    <h2>How data is handled</h2>
+    <p>Health and activity data stays on devices the business controls and is processed by
+      Anthropic's Claude to produce analysis and training plans. Nothing is sold, shared for
+      advertising, or passed to other parties. The user can revoke access at any time in Garmin
+      Connect. Full details are in the <a href="privacy.html">privacy policy</a>.</p>
+  </section>
+
+  <nav>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="mailto:ivankuzmin.dev@gmail.com">ivankuzmin.dev@gmail.com</a>
+  </nav>
+  <p class="muted">Garmin and Garmin Connect are trademarks of Garmin Ltd. or its subsidiaries.
+    Garmin Coach is not affiliated with or endorsed by Garmin.</p>
+</main>
+</body>
+</html>
