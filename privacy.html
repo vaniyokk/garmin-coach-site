@@ -33,41 +33,42 @@
     <tr><td>Daily health data: sleep, heart-rate variability, resting heart rate, stress, Body
       Battery, respiration, steps, body weight</td><td>Garmin Connect, with the user's
       authorization</td></tr>
-    <tr><td>Training plans, workouts and training notes the user writes, including symptoms
-      they choose to log</td><td>The user</td></tr>
+    <tr><td>Training plans, workouts, a training and health journal, and the health background
+      the user chooses to record (for example symptoms, past illnesses and test results)</td>
+      <td>The user</td></tr>
   </table>
   <p>Activity files can include GPS tracks of the user's own workouts; they are used only for
     the purpose below. We do not collect data about other people.</p>
 
   <h2>Why we use it</h2>
-  <p>Only to analyze the user's training and recovery, plan their training, and send
-    structured workouts back to their own Garmin account and calendar.</p>
+  <p>Only to analyze the user's training, recovery and health, plan their training, give them
+    health guidance based on their own data, and send structured workouts back to their own
+    Garmin account and calendar.</p>
 
   <h2>Where it is processed and who receives it</h2>
   <ul>
-    <li><strong>Our own devices.</strong> Garmin data is stored locally on devices we control,
-      not in a public or shared database.</li>
-    <li><strong>Cloudflare (hosting).</strong> Our backend runs on Cloudflare Workers in an
-      account we control. It holds the Garmin authorization tokens, receives the data Garmin
-      sends after each sync (daily health summaries, activity summaries and activity files) and
-      stores it in Cloudflare D1 and Workers KV until we download it to our own devices.</li>
-    <li><strong>Anthropic (Claude).</strong> Data is processed by Anthropic's Claude models to
-      produce analysis and training plans, under Anthropic's commercial terms. This may happen in
-      processing environments operated by Anthropic.</li>
+    <li><strong>Cloudflare (hosting and storage).</strong> Our backend runs on Cloudflare in an
+      account we control. It holds the Garmin authorization tokens and stores the Garmin data
+      together with the user's plans, workouts and notes. It is not a public or shared database.
+      Older copies of the data may also remain on devices we control.</li>
+    <li><strong>Anthropic (Claude).</strong> The user works with Personal Coach through Anthropic's
+      Claude. Data is processed by Anthropic's Claude models to produce analysis, guidance and
+      training plans, under Anthropic's commercial terms. This may happen in processing
+      environments operated by Anthropic.</li>
     <li><strong>Garmin.</strong> Workouts we create are sent to the user's own Garmin Connect
       account.</li>
     <li><strong>Google Calendar.</strong> Session titles, times and exercise descriptions are added
       to the user's own calendar. Health data is not sent there.</li>
-    <li><strong>GitHub.</strong> Our source code and training plans are kept in a private
-      repository. Raw Garmin health data is not stored there.</li>
+    <li><strong>GitHub.</strong> Our source code and some older training notes are kept in a
+      private repository. Raw Garmin data is not stored there.</li>
   </ul>
   <p>We do not sell data, use it for advertising, or share it with anyone else.</p>
 
   <h2>AI transparency statement</h2>
   <p>Personal Coach uses an AI system, Anthropic's Claude, to read the user's Garmin data and
-    write training analysis, workout plans and the workouts sent back to Garmin. The AI does
-    not make medical decisions; symptoms the user reports are handled by conservative rules
-    and a recommendation to see a clinician.</p>
+    write training analysis, health guidance, workout plans and the workouts sent back to Garmin.
+    The AI gives general health information and suggestions based on the user's data; it does
+    not diagnose, and urgent symptoms are referred to medical care at once.</p>
   <ul>
     <li>Garmin data and anything derived from it, including our prompts, conversations and the
       AI's outputs, are never used to train, evaluate, benchmark or improve any AI model, and we
@@ -89,13 +90,13 @@
   <p>As long as the user keeps their account connected. A user can revoke access at any time in
     Garmin Connect (Settings → Connected Apps); when Garmin tells us access was revoked, our
     backend deletes the authorization tokens at once. On request we delete the stored data,
-    on Cloudflare and on our devices, within 30 days.</p>
+    on Cloudflare and on any of our devices, within 30 days.</p>
 
   <h2>Security</h2>
   <p>Access credentials are stored with permissions restricted to the device owner or as
     encrypted Cloudflare secrets, are never committed to source control, and are used only to
-    call Garmin's APIs on the user's behalf. Our backend accepts Garmin's notifications only on
-    a secret address and its other functions only with a secret key.</p>
+    call Garmin's APIs on the user's behalf. Every function of our backend requires
+    authentication.</p>
 
   <h2>Changes</h2>
   <p>If this policy changes, we update this page and its effective date.</p>
