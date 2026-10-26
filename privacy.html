@@ -12,7 +12,7 @@
   <header>
     <p class="kicker">Garmin Coach</p>
     <h1>Privacy policy</h1>
-    <p class="lede">Effective 26 October 2026</p>
+    <p class="lede">Effective 26 October 2026 · updated 26 October 2026</p>
   </header>
 
   <h2>Who is responsible</h2>
@@ -47,6 +47,10 @@
   <ul>
     <li><strong>Our own devices.</strong> Garmin data is stored locally on devices we control,
       not in a public or shared database.</li>
+    <li><strong>Cloudflare (hosting).</strong> Our backend runs on Cloudflare Workers in an
+      account we control. It holds the Garmin authorization tokens, receives the data Garmin
+      sends after each sync (daily health summaries, activity summaries and activity files) and
+      stores it in Cloudflare D1 and Workers KV until we download it to our own devices.</li>
     <li><strong>Anthropic (Claude).</strong> Data is processed by Anthropic's Claude models to
       produce analysis and training plans, under Anthropic's commercial terms. This may happen in
       processing environments operated by Anthropic.</li>
@@ -59,14 +63,39 @@
   </ul>
   <p>We do not sell data, use it for advertising, or share it with anyone else.</p>
 
+  <h2>AI transparency statement</h2>
+  <p>Garmin Coach uses an AI system, Anthropic's Claude, to read the user's Garmin data and
+    write training analysis, workout plans and the workouts sent back to Garmin. The AI does
+    not make medical decisions; symptoms the user reports are handled by conservative rules
+    and a recommendation to see a clinician.</p>
+  <ul>
+    <li>Garmin data and anything derived from it, including our prompts, conversations and the
+      AI's outputs, are never used to train, evaluate, benchmark or improve any AI model, and we
+      have opted out of model training on our Anthropic account.</li>
+    <li>No AI model, dataset or knowledge base is built from Garmin data.</li>
+    <li><strong>Consent.</strong> Before a Garmin account is connected, the user is shown this
+      statement and must explicitly agree to AI processing; the time of consent is recorded.</li>
+    <li><strong>Withdrawing consent.</strong> The user can withdraw at any time by disconnecting
+      Garmin Coach in Garmin Connect (Settings → Connected Apps) or by emailing us. AI processing
+      stops immediately and the data is deleted as described below.</li>
+  </ul>
+
+  <h2>Your rights</h2>
+  <p>The user can ask us to access, export, correct or delete their data, or to stop processing
+    it, by emailing <a href="mailto:ivankuzmin.dev@gmail.com">ivankuzmin.dev@gmail.com</a>. We
+    answer within 30 days. Exports are provided as JSON and the original activity files.</p>
+
   <h2>How long we keep it</h2>
   <p>As long as the user keeps their account connected. A user can revoke access at any time in
-    Garmin Connect (Settings → Connected Apps) and ask us to delete their data; we delete it
-    within 30 days of the request.</p>
+    Garmin Connect (Settings → Connected Apps); when Garmin tells us access was revoked, our
+    backend deletes the authorization tokens at once. On request we delete the stored data,
+    on Cloudflare and on our devices, within 30 days.</p>
 
   <h2>Security</h2>
-  <p>Access credentials are stored with permissions restricted to the device owner, are never
-    committed to source control, and are used only to call Garmin's APIs on the user's behalf.</p>
+  <p>Access credentials are stored with permissions restricted to the device owner or as
+    encrypted Cloudflare secrets, are never committed to source control, and are used only to
+    call Garmin's APIs on the user's behalf. Our backend accepts Garmin's notifications only on
+    a secret address and its other functions only with a secret key.</p>
 
   <h2>Changes</h2>
   <p>If this policy changes, we update this page and its effective date.</p>
